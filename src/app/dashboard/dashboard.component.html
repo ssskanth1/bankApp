@@ -8,18 +8,20 @@
   </nav>
   <h1 style="color: white;">Welcome {{user}} </h1>
   <h5 style= "color: aliceblue;">{{lDate|date:'short'}}</h5>
+  <button class="btn btn-danger" (click)="deleteAccount()" style="float: right; margin-right: 10px;">Delete</button>
   <!-- <div>
     <input type="submit" value="Logout" class="btn float-right logout_btn  " style="margin-right: 20px; background-color: #FFC312;"  >
     </div> -->
     <button class="btn btn-warning" (click)="logout()" style="float: right; margin-right: 10px;">logout</button>
     
   <a routerLink="/transaction">View Transaction</a>
-  <app-animation></app-animation>
+  <!-- <app-animation></app-animation> -->
+  <app-delete-confirm (onCancel)="cancel()" [item]="acno"></app-delete-confirm>
   
   <hr>
 
   
-  <div class="container col-md-12 mt-0">
+  <div [ngClass]="acno?'c1':'' " class="container col-md-12 mt-0">
       <div class="d-flex justify-content-center h-100">
           <div class="card">
               <div class="card-header">
@@ -67,7 +69,7 @@
 
 
 
-  <div class="container col-md-12 mt-0">
+  <div [ngClass]="acno?'c1':'' " class="container col-md-12 mt-0">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
